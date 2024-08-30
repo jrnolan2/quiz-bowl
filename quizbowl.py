@@ -1,6 +1,7 @@
 import json
 import random
 
+print('Reading in database.')
 with open('tossups.json',encoding='utf8') as tossup_file:
     question_lines = tossup_file.readlines()
 
@@ -78,13 +79,13 @@ categories = ['History', 'Literature', 'Science', 'Fine Arts', 'Religion', 'Myth
 def ask_random_question_from_list(list):
     tossup = random.choice(list)
     print(tossup['question_sanitized'])
-    print('ANSWER: ', tossup['answer'])
+    print('ANSWER:', tossup['answer_sanitized'])
 
 while True:
     random_category = random.choices(categories, weights=(history_count, literature_count, science_count, fine_arts_count, religion_count,\
         mythology_count, philosophy_count, social_science_count, current_events_count, geography_count,\
         other_academic_count, trash_count))[0]
-    print('Category: ', random_category)
+    print('Category:', random_category)
     if random_category == 'History':
         ask_random_question_from_list(history_tossups)
     if random_category == 'Literature':
