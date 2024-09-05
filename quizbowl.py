@@ -1,6 +1,7 @@
 import json
 import random
 
+# Read in tossups from tossups.json file
 print('Reading in database.')
 with open('tossups.json',encoding='utf8') as tossup_file:
     question_lines = tossup_file.readlines()
@@ -9,11 +10,9 @@ tossups = []
 for question_line in question_lines:
     tossups.append(json.loads(question_line))
 
-# Initialize tossups per category dictionary
+# Split tossups based on their category
 categories = ['History','Literature','Science','Fine Arts','Religion','Mythology','Philosophy','Social Science','Current Events','Geography','Other Academic','Trash']
 tossups_per_category = [[] for _ in range(len(categories))]
-
-# Add question to appropriate category
 for tossup in tossups:
     category = tossup['category']
     tossups_per_category[categories.index(category)].append(tossup)
@@ -28,7 +27,7 @@ for category in categories:
     popularity = int(input('How many people want ' + category + ' questions? '))
     popularity_of_categories.append(popularity)
 
-# Asks a random question out of list of tossups
+# Function: asks a random question out of list of tossups
 def ask_random_question_from_list(list):
     tossup = random.choice(list)
     print(tossup['question_sanitized'])
