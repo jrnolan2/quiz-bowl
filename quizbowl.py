@@ -1,6 +1,9 @@
 import json
 import random
 
+MIN_DIFFICULTY = 3
+MAX_DIFFICULTY = 5
+
 # Read in tossups from tossups.json file
 print('Reading in database.')
 with open('tossups.json',encoding='utf8') as tossup_file:
@@ -8,7 +11,10 @@ with open('tossups.json',encoding='utf8') as tossup_file:
 
 tossups = []
 for question_line in question_lines:
-    tossups.append(json.loads(question_line))
+    question = json.loads(question_line)
+    difficulty = int(question['difficulty']['$numberInt'])
+    if difficulty >= MIN_DIFFICULTY and difficulty <= MAX_DIFFICULTY:
+        tossups.append(question)
 
 # Split tossups based on their category
 categories = ['History','Literature','Science','Fine Arts','Religion','Mythology','Philosophy','Social Science','Current Events','Geography','Other Academic','Trash']
@@ -31,6 +37,7 @@ with open('category_weights.toml') as category_weights_file:
 # Function: asks a random question out of list of tossups
 def ask_random_question_from_list(list):
     tossup = random.choice(list)
+    print('Difficulty:',tossup['difficulty']['$numberInt'])
     print(tossup['question_sanitized'])
     print('ANSWER:', tossup['answer_sanitized'])
 
