@@ -29,7 +29,7 @@ for category_name, tossups in zip(categories,tossups_per_category):
 
 # Get number of people interested in each category
 popularity_of_categories = []
-with open('category_weights.toml') as category_weights_file:
+with open('category_weights.cfg') as category_weights_file:
     for line in category_weights_file:
         popularity = int(line.split('=')[1])
         popularity_of_categories.append(popularity)
