@@ -11,5 +11,5 @@ A simple program that asks questions from the [QBReader database](https://www.qb
 ### Web browser: app.py
 4. Install Flask if not already installed with `pip install flask`
 5. Run app.py with Python
-6. Open `http://localhost:5000/` on your browser
+6. Open `http://localhost:5001/` on your browser
 7. Press "Show Answer" -> "Next Question" to reveal next question
