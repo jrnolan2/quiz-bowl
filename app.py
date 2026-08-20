@@ -20,7 +20,7 @@ for question_line in question_lines:
     if MIN_DIFFICULTY <= difficulty <= MAX_DIFFICULTY:
         tossups.append(question)
 
-categories = ['History','Literature','Science','Fine Arts','Religion','Mythology','Philosophy','Social Science','Current Events','Geography','Other Academic','Trash']
+categories = ['History','Literature','Science','Fine Arts','Religion','Mythology','Philosophy','Social Science','Current Events','Geography','Other Academic','Pop Culture']
 tossups_per_category = [[] for _ in range(len(categories))]
 for tossup in tossups:
     category = tossup['category']
